@@ -15,7 +15,14 @@ return [
         ->content(Listeners\AddAdsenseJs::class),
     new Extend\Locales(__DIR__.'/resources/locale'),
 
-    function (Dispatcher $events) {
-        $events->subscribe(Listeners\LoadSettingsFromDatabase::class);
-    },
+    // (new Extend\Event())
+    //     ->subscribe(Listeners\LoadSettingsFromDatabase::class),
+    (new Extend\Settings)
+        ->serializeToForum('flagrow.ads.under-header', 'flagrow.ads.under-header')
+        ->serializeToForum('flagrow.ads.between-posts', 'flagrow.ads.between-posts')
+        ->serializeToForum('flagrow.ads.under-nav-items', 'flagrow.ads.under-nav-items')
+        ->serializeToForum('flagrow.ads.between-n-posts', 'flagrow.ads.between-n-posts')
+        ->serializeToForum('flagrow.ads.start-from-post', 'flagrow.ads.start-from-post')
+        ->serializeToForum('flagrow.ads.start-from-post', 'flagrow.ads.start-from-post')
+        ->serializeToForum('flagrow.ads.between-n-posts', 'flagrow.ads.between-n-posts'),
 ];

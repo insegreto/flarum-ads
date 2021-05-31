@@ -3,7 +3,7 @@ import HeaderPrimary from 'flarum/components/HeaderPrimary'
 
 export default function () {
     extend(HeaderPrimary.prototype, 'view', (component) => {
-
+        
         if (document.getElementsByClassName('Flagrow-Ads-under-header').length) {
             return;
         }

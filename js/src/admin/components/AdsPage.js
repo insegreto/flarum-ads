@@ -1,17 +1,19 @@
-import Page from 'flarum/components/Page';
+import ExtensionPage from 'flarum/components/ExtensionPage';
+import LoadingIndicator from "flarum/components/LoadingIndicator";
 import Button from "flarum/components/Button";
 import saveSettings from "flarum/utils/saveSettings";
 import Stream from 'flarum/utils/Stream';
 import Switch from 'flarum/components/Switch';
 import withAttr from 'flarum/utils/withAttr';
 
-export default class UploadPage extends Page {
+export default class UploadPage extends ExtensionPage {
     oninit(vnode) {
         super.oninit(vnode);
         // get the saved settings from the database
         const settings = app.data.settings;
 
         this.values = {};
+        this.loading = true;
 
         // our package prefix (to be added to every field and checkbox in the setting table)
         this.settingsPrefix = 'flagrow.ads';
@@ -34,10 +36,15 @@ export default class UploadPage extends Page {
 
         // bind the values of the fields and checkboxes to the getter/setter functions
         this.positions.forEach((key) => (this.values[key] = Stream(settings[this.addPrefix(key)])));
-
+        
         this.properties.forEach((key) => (this.values[key] = Stream(settings[this.addPrefix(key)])));
 
         this.settings.forEach((key) => (this.values[key] = Stream(Number(settings[this.addPrefix(key)]))));
+
+        app.store.find("achievements").then(() => {
+            this.loading = false;
+            m.redraw();
+        });
     }
 
     /**
@@ -45,7 +52,16 @@ export default class UploadPage extends Page {
      *
      * @returns {*}
      */
-    view() {
+    content() {
+        if (this.loading) {
+            return (
+                <div className="Achievements">
+                <div className="container">
+                    <LoadingIndicator />
+                </div>
+                </div>
+            );
+        }
         return [
             m('div', {className: 'AdsPage'}, [
                 m('div', { className: 'container' }, [

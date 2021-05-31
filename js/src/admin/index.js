@@ -1,7 +1,8 @@
 import app from "flarum/app";
-import addAdsPage from "./addAdsPage";
+import AdsPage from "./components/AdsPage";
 
-app.initializers.add('flagrow-ads', () => {
-    // add the admin pane
-    addAdsPage();
+app.initializers.add('malago/ads', () => {
+    app.extensionData
+        .for("malago-ads")
+        .registerPage(AdsPage);
 });
