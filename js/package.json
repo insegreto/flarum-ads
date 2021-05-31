@@ -1,6 +1,6 @@
 {
-    "name": "@flagrow/ads",
-    "version": "0.0.0",
+    "name": "@malago/flarum-ads",
+    "version": "0.3.0",
     "scripts": {
         "build": "webpack --mode production",
         "dev": "webpack --mode development --watch"
