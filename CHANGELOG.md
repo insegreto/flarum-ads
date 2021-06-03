@@ -1,3 +1,5 @@
+### 0.3.1
+  - Removed wrong code
 ### 0.3.0 
   - Added compatibility for Flarum 1.0
 
