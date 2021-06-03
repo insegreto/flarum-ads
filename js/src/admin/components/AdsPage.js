@@ -13,7 +13,6 @@ export default class UploadPage extends ExtensionPage {
         const settings = app.data.settings;
 
         this.values = {};
-        this.loading = true;
 
         // our package prefix (to be added to every field and checkbox in the setting table)
         this.settingsPrefix = 'flagrow.ads';
@@ -41,10 +40,6 @@ export default class UploadPage extends ExtensionPage {
 
         this.settings.forEach((key) => (this.values[key] = Stream(Number(settings[this.addPrefix(key)]))));
 
-        app.store.find("achievements").then(() => {
-            this.loading = false;
-            m.redraw();
-        });
     }
 
     /**
@@ -53,15 +48,7 @@ export default class UploadPage extends ExtensionPage {
      * @returns {*}
      */
     content() {
-        if (this.loading) {
-            return (
-                <div className="Achievements">
-                <div className="container">
-                    <LoadingIndicator />
-                </div>
-                </div>
-            );
-        }
+
         return [
             m('div', {className: 'AdsPage'}, [
                 m('div', { className: 'container' }, [
@@ -123,7 +110,6 @@ export default class UploadPage extends ExtensionPage {
                         Button.component({
                             type: 'submit',
                             className: 'Button Button--primary',
-                            loading: this.loading,
                             disabled: !this.changed()
                         }, app.translator.trans('flagrow-ads.admin.buttons.save')),
                     ),
