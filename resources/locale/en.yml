@@ -19,6 +19,7 @@ flagrow-ads:
             adsense-client-id: Provide your publisher ID
             start-from-post: Specify from which post to start to show an ad
             between-n-posts: Specify after how many posts to place an ad
+            header-only-frontpage: Under navigational header ad only shows on front page
         tab:
             title: Advertising
             description: Set ads preferences and positions.

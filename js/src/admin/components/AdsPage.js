@@ -30,7 +30,8 @@ export default class UploadPage extends ExtensionPage {
         this.settings = [
     	    'adsense-enabled',
     	    'start-from-post',
-            'between-n-posts'
+            'between-n-posts',
+            'header-only-frontpage'
         ];
 
         // bind the values of the fields and checkboxes to the getter/setter functions
@@ -106,6 +107,16 @@ export default class UploadPage extends ExtensionPage {
                                 })
                             ])
                         }),
+
+                        m('fieldset', {className: 'AdsPage-settings'}, [
+                            Switch.component(
+                                {
+                                    state: this.values['header-only-frontpage']() || false,
+                                    onchange: this.values['header-only-frontpage'],
+                                },
+                                app.translator.trans('flagrow-ads.admin.settings.header-only-frontpage')
+                            ),
+                        ]),
 
                         Button.component({
                             type: 'submit',

@@ -24,5 +24,6 @@ return [
         ->serializeToForum('flagrow.ads.between-n-posts', 'flagrow.ads.between-n-posts')
         ->serializeToForum('flagrow.ads.start-from-post', 'flagrow.ads.start-from-post')
         ->serializeToForum('flagrow.ads.start-from-post', 'flagrow.ads.start-from-post')
-        ->serializeToForum('flagrow.ads.between-n-posts', 'flagrow.ads.between-n-posts'),
+        ->serializeToForum('flagrow.ads.between-n-posts', 'flagrow.ads.between-n-posts')
+        ->serializeToForum('flagrow.ads.header-only-frontpage', 'flagrow.ads.header-only-frontpage'),
 ];
