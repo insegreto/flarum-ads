@@ -29,6 +29,7 @@ export default function () {
         var adsElement = document.getElementsByClassName('Flagrow-Ads-under-header');
         if (adsElement.length > 0) adsElement[0].remove();
         adsElement = document.getElementsByClassName('adsbygoogle');
-        if(adsElement.length>0) adsElement[0].remove();
+        for (var i = 0; i < adsElement.length; i++)
+            adsElement[i].remove();
     });
 }
