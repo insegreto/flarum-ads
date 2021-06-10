@@ -28,8 +28,6 @@ export default function () {
     extend(IndexPage.prototype, 'onremove', (component) => {
         var adsElement = document.getElementsByClassName('Flagrow-Ads-under-header');
         if (adsElement.length > 0) adsElement[0].remove();
-        adsElement = document.getElementsByClassName('adsbygoogle');
-        for (var i = 0; i < adsElement.length; i++)
-            adsElement[i].remove();
+        $('.adsbygoogle').remove();
     });
 }
