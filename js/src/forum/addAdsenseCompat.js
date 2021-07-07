@@ -52,16 +52,4 @@ export default function () {
 
         }
     });
-
-    extend(PostStream.prototype, 'oncreate', evalAdsJs);
-    extend(PostStream.prototype, 'onupdate', evalAdsJs);
-}
-
-function evalAdsJs() {
-    this.$('.adsbygoogle script').each(function () {
-        if (!$(this).data('executed')) {
-            eval.call(window, $(this).text());
-            $(this).data('executed', true);
-        }
-    });
 }
