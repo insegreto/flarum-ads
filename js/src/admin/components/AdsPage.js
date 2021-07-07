@@ -172,7 +172,7 @@ export default class UploadPage extends ExtensionPage {
         saveSettings(settings)
             .then(() => {
                 // on success, show popup
-                app.alerts.show({ type: 'success' }, app.translator.trans('core.admin.basics.saved_message'));
+                app.alerts.show({ type: 'success' }, app.translator.trans('core.admin.settings.saved_message'));
             })
             .catch(() => {
             })
