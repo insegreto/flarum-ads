@@ -1,3 +1,6 @@
+### 0.3.2
+  - Added fix for Google Adsense (fingers crossed!)
+
 ### 0.3.1
   - Removed wrong code
 ### 0.3.0 
