@@ -19,16 +19,23 @@ export default function() {
                 const postNum = post.attrs['data-number'];
 
                 if (postNum === start || ((postNum - start) % between) === 0) {
-                    if (!assigned[postNum]) {
-                        assigned[postNum] = advertisements.shift();
+                    const key = `post-${postNum}`;
+                    console.log(key);
+                    if (!assigned[key]) {
+                        const ad = advertisements.shift();
+                        assigned[key] = ad;
+
+                        console.log(ad);
                     }
-                    post.children.push(
-                        m('div.Flagrow-Ads-fake-poststream-item',
-                            m('article.Post.EventPost',
-                                m('div.Flagrow-Ads-between-posts.EventPost-info', m.trust(assigned[postNum]))
+                    if (assigned[key]) {
+                        post.children.push(
+                            m('div.Flagrow-Ads-fake-poststream-item',
+                                m('article.Post.EventPost',
+                                    m('div.Flagrow-Ads-between-posts.EventPost-info', m.trust(assigned[key]))
+                                )
                             )
-                        )
-                    );
+                        );
+                    }
                 }
             });
         }
