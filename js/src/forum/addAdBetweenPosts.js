@@ -12,16 +12,20 @@ export default function() {
             const between = Number(app.forum.attribute('flagrow.ads.between-n-posts'));
             // We need to copy all comments first, otherwise -there is no way to detect and jump the last comment
             const commentPosts = component.children.filter(post => post.attrs['data-type'] === 'comment');
-            console.log('ADS', advertisements);
+
             // Insert an inside every n comment
             commentPosts.forEach((post, i) => {
                 const postNum = post.attrs['data-number'];
                 const ad = advertisements.shift();
-                console.log(`AD ${i}`, ad);
+
                 if (!ad) {
                     return;
                 }
-
+                console.log(`-------post ${i}`);
+                console.log('postNum', postNum);
+                console.log('start', start);
+                console.log('between', between);
+                console.log('remainder', (postNum - start) % between);
                 if (postNum === start || ((postNum - start) % between) === 0) {
                     post.children.push(
                         m('div.Flagrow-Ads-fake-poststream-item',
