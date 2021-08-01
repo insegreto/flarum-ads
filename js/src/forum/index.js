@@ -1,4 +1,5 @@
 import app from 'flarum/app';
+import { extend } from 'flarum/common/extend';
 import Page from 'flarum/common/components/Page';
 import addAdUnderHeader from './addAdUnderHeader';
 import addAdUnderNavItems from './addAdUnderNavItems';
