@@ -15,18 +15,18 @@ app.initializers.add('flagrow-ads', app => {
     addAdBetweenPosts();
     addAdsenseCompat();
 
-    extend(Page.prototype, 'oninit', function () {
-        if (!GLOBAL_nativery) {
-            return;
-        }
+    // extend(Page.prototype, 'oninit', function () {
+    //     if (!GLOBAL_nativery) {
+    //         return;
+    //     }
 
-        GLOBAL_nativery.firstLoad = undefined;
+    //     GLOBAL_nativery.firstLoad = undefined;
 
-        $('script[src="//cdn.nativery.com/widget/js/nat.js"]').remove();
-        $('head style:first-child').remove();
+    //     $('script[src="//cdn.nativery.com/widget/js/nat.js"]').remove();
+    //     $('head style:first-child').remove();
 
-        var nat = document.createElement('script'); nat.type = 'text/javascript'; nat.async = true;
-        nat.src = '//cdn.nativery.com/widget/js/nat.js';
-        var nats = document.getElementsByTagName('script')[0]; nats.parentNode.insertBefore(nat, nats);
-    });
+    //     var nat = document.createElement('script'); nat.type = 'text/javascript'; nat.async = true;
+    //     nat.src = '//cdn.nativery.com/widget/js/nat.js';
+    //     var nats = document.getElementsByTagName('script')[0]; nats.parentNode.insertBefore(nat, nats);
+    // });
 });
