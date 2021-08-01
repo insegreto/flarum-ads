@@ -20,12 +20,10 @@ export default function() {
 
                 if (postNum === start || ((postNum - start) % between) === 0) {
                     const key = `post-${postNum}`;
-                    console.log(key);
+
                     if (!assigned[key]) {
                         const ad = advertisements.shift();
                         assigned[key] = ad;
-
-                        console.log(ad);
                     }
                     if (assigned[key]) {
                         post.children.push(
