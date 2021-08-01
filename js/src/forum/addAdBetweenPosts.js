@@ -8,6 +8,7 @@ export default function() {
 
         if (advertisement && component.children.length) {
             const advertisements = advertisement.split(',').map(Function.prototype.call, String.prototype.trim);
+            const assigned = {};
             const start = Number(app.forum.attribute('flagrow.ads.start-from-post'));
             const between = Number(app.forum.attribute('flagrow.ads.between-n-posts'));
             // We need to copy all comments first, otherwise -there is no way to detect and jump the last comment
@@ -16,22 +17,15 @@ export default function() {
             // Insert an inside every n comment
             commentPosts.forEach((post, i) => {
                 const postNum = post.attrs['data-number'];
-                const ad = advertisements.shift();
 
-                if (!ad) {
-                    return;
-                }
-                console.log(`-------post ${i}`);
-                console.log('post', post);
-                console.log('postNum', postNum);
-                console.log('start', start);
-                console.log('between', between);
-                console.log('remainder', (postNum - start) % between);
                 if (postNum === start || ((postNum - start) % between) === 0) {
+                    if (!assigned[postNum]) {
+                        assigned[postNum] = advertisements.shift();
+                    }
                     post.children.push(
                         m('div.Flagrow-Ads-fake-poststream-item',
                             m('article.Post.EventPost',
-                                m('div.Flagrow-Ads-between-posts.EventPost-info', m.trust(ad))
+                                m('div.Flagrow-Ads-between-posts.EventPost-info', m.trust(assigned[postNum]))
                             )
                         )
                     );
