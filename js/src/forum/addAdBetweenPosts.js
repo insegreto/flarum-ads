@@ -17,7 +17,11 @@ export default function() {
             commentPosts.forEach((post, i) => {
                 const postNum = post.attrs['data-number'];
                 const ad = advertisements.shift();
-                if (postNum === start || ((postNum - start) % between) === 0 && ad) {
+                if (!ad) {
+                    return;
+                }
+
+                if (postNum === start || ((postNum - start) % between) === 0) {
                     post.children.push(
                         m('div.Flagrow-Ads-fake-poststream-item',
                             m('article.Post.EventPost',
